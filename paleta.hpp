@@ -35,7 +35,7 @@ namespace stc {
       quantidade++;
     }
     // ----------------
-    Cor consultarCor(int thisValor){
+    Cor getCor(int thisValor){
       for(int i = 0; i < quantidade; i++){
         if(thisValor < valores[i]) return cores[i];
       }
@@ -58,14 +58,34 @@ namespace stc {
       return toOut;
     }
     // ----------------
-    void writePaleta(std::string ){
+    void write(std::string dir){
+      std::ofstream file(dir);
 
+      file << quantidade << '\n';
+
+      for(int i = 0; i < quantidade; i++){
+        file << valores[i] << ' ' << (int)cores[i].r << ' ' << (int)cores[i].g << ' ' << (int)cores[i].b << '\n';
+      }
+
+      file.flush();
+      file.close();
     }
     // ----------------
-    void readPaleta(std::string ){
+    void read(std::string dir){
+      std::ifstream file(dir);
+      
+      file >> quantidade;
 
+      int r, g, b;
+      for(int i = 0; i < quantidade; i++){
+        file >> valores[i] >> r >> g >> b;
+        cores[i].r = static_cast<unsigned char>(r);
+        cores[i].g = static_cast<unsigned char>(g);
+        cores[i].b = static_cast<unsigned char>(b);
+      }
+
+      file.close();
     }
-
+    // ----------------
   };
-  
 }
