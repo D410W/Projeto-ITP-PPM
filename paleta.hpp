@@ -13,9 +13,7 @@ namespace stc {
     Cor cores[100];
     int valores[100];
   public:
-    Paleta(){ // inicializador vazio
-      quantidade = 0;
-    }
+    Paleta() : quantidade(0) {} // inicializador vazio
     // ----------------
     Paleta(int newQtd, std::initializer_list<Cor> newCores, std::initializer_list<int> newValores) { // inicializador pronto
       quantidade = newQtd;
