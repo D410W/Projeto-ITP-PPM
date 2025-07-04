@@ -1,6 +1,6 @@
 #include <fstream>
 #include <iostream>
-#include "classes.hpp"
+#include "paleta.hpp"
 
 int main(){
 

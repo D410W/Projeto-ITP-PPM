@@ -73,6 +73,10 @@ namespace stc {
     // ----------------
     void read(std::string dir){
       std::ifstream file(dir);
+
+      if(!file.is_open()){
+        throw std::runtime_error("Arquivo \'" + dir + "\' nao encontrado.");
+      }
       
       file >> quantidade;
 
