@@ -20,12 +20,12 @@ namespace stc {
       delete[] pixels;
     }
     // ------------------
-    void exportf(std::string fileName){
+    void write(std::string fileName){
       if(!( std::filesystem::exists("out") && std::filesystem::is_directory("out") )){ // guardar arquivos na pasta 'out'
         std::filesystem::create_directory("out");
       }
       
-      std::ofstream outputFile("out/"+fileName+".ppm");
+      std::ofstream outputFile("out/"+fileName);
 
       outputFile << "P3\n" << this->width << ' ' << this->height << "\n" + std::to_string(this->maxCol) + "\n";
       for(int i = 0; i < this->height; i++){
