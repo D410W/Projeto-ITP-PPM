@@ -1,5 +1,6 @@
 #include <fstream>
 #include <iostream>
+#include <string>
 
 #include "paleta.hpp"
 #include "imagep3.hpp"
@@ -16,9 +17,11 @@ int main(){
 
   // std::cout << thispaleta.printar();
 
-  stc::ImageP3 *imagem = new stc::ImageP3(30,30);
+  stc::ImageP3 imagem(30,30);
 
-  (*imagem).exportf("teste");
+  std::string fileName = "teste.ppm";
+
+  imagem.write(fileName);
 
   return 0;
 }
