@@ -3,11 +3,9 @@
 #include <string>
 #include <fstream>
 
-namespace stc {
+#include "cor.hpp"
 
-  struct Cor {
-    unsigned char r = 0, g = 0, b = 0;
-  };
+namespace stc {
 
   class Paleta {
   private:
