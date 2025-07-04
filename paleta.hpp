@@ -19,14 +19,14 @@ namespace stc {
       quantidade = 0;
     }
     // ----------------
-    Paleta(int newQtd, std::initializer_list<Cor> cs, std::initializer_list<int> vs) { // inicializador pronto
+    Paleta(int newQtd, std::initializer_list<Cor> newCores, std::initializer_list<int> newValores) { // inicializador pronto
       quantidade = newQtd;
       
       int i = 0;
-      for (const auto& c : cs) cores[i++] = c;
+      for (const auto& c : newCores) cores[i++] = c;
       
       i = 0;
-      for (const auto& v : vs) valores[i++] = v;
+      for (const auto& v : newValores) valores[i++] = v;
     }
     // ----------------
     void adicionar(Cor newCor, int newValor){ // adicionar uma cor no final
