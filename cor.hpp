@@ -7,7 +7,6 @@ namespace stc {
     unsigned char r = 0, g = 0, b = 0;
 
     Cor() : r(0), g(0), b(0) {}
-        
     Cor(int r1, int g1, int b1)
             : r(std::clamp(r1, 0, 255)),
               g(std::clamp(g1, 0, 255)),
