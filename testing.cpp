@@ -3,33 +3,23 @@
 
 #include "includes/header.hpp"
 
+void drawBox(stc::ImageP3 &imagem, int x0, int y0, int x1, int y1, stc::Cor newColor){
+  for(int x = x0; x <= x1; x++){
+    for(int y = y0; y <= y1; y++){
+      imagem.setPixel(x, y, newColor);
+    }
+  }
+}
+
 int main(){
 
-  // stc::Paleta thispaleta( 2, { {250,0,0},{0,250,0} }, { 100,200 } );
-
-  // thispaleta.adicionar({0,0,255}, 205);
-
-  // std::cout << (int)thispaleta.getCor(99).r << '\n';
-
-  // thispaleta.read("pal.txt");
-
-  // std::cout << thispaleta.printar();
-
-  stc::ImageP3 imagem(30,30);
+  stc::ImageP3 bandeira(20,30);
   
-  stc::Cor thisPixel = imagem.getPixel(2,2);
+  drawBox(bandeira, 0, 0, 9, 19, stc::Cor(255,0,0));
+  drawBox(bandeira, 10, 0, 19, 19, stc::Cor(255,255,255));
+  drawBox(bandeira, 20, 0, 29, 19, stc::Cor(0,0,255));
   
-  std::cout << (int)thisPixel.r << ' ' << (int)thisPixel.g << ' ' << (int)thisPixel.b << '\n';
-  
-  imagem.setPixel(2, 2, stc::Cor(200,180,160));
-  
-  thisPixel = imagem.getPixel(2,2);
-  
-  std::cout << (int)thisPixel.r << ' ' << (int)thisPixel.g << ' ' << (int)thisPixel.b << '\n';
-
-  std::string fileName = "teste.ppm";
-
-  imagem.write(fileName);
+  bandeira.write("teste.ppm");
 
   return 0;
 }

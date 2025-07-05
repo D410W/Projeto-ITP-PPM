@@ -20,7 +20,7 @@ namespace stc {
       delete[] pixels;
     }
     // ------------------
-    void write(std::string fileName){
+    void write(const std::string &fileName){
       if(!( std::filesystem::exists("out") && std::filesystem::is_directory("out") )){ // guardar arquivos na pasta 'out'
         std::filesystem::create_directory("out");
       }
@@ -42,15 +42,11 @@ namespace stc {
     }
     // ------------------
     Cor getPixel(int x, int y){
-      return this->pixels[(y-1) * this->width + (x-1)];
+      return this->pixels[y * this->width + x];
     }
     // ------------------
-    void setPixel(int x, int y, Cor newColor){
-      this->pixels[(y-1) * this->width + (x-1)] = newColor;
-    }
-    // ------------------
-    void drawBox(int x0, int y0, int x1, int y1, Cor color){
-      
+    void setPixel(int x, int y, const Cor &newColor){
+      this->pixels[y * this->width + x] = newColor;
     }
     // ------------------
   };
