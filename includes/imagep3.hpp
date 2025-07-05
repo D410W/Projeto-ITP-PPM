@@ -6,7 +6,7 @@
 #include "cor.hpp"
 
 namespace stc {
-  class ImageP3 {
+  class ImageP3 { // alocaçao dinamica de um array[linhas*colunas]
   private:
     int height, width;
     Cor *pixels = nullptr;
@@ -14,12 +14,16 @@ namespace stc {
     
   public:
     ImageP3(int w, int h) : height(h), width(w), maxCol(255), pixels(new Cor[h*w]) {} // largura (x) e altura (y)
-    ImageP3(int w, int h, int maxvalue) : height(h), width(w), maxCol(maxvalue), pixels(new Cor[h*w]) {}
+    ImageP3(int w, int h, int newMax) : height(h), width(w), maxCol(newMax), pixels(new Cor[h*w]) {}
 
     ~ImageP3(){
       delete[] pixels;
     }
     // ------------------
+    int getWidth(){ return this->width; }
+    int getHeight(){ return this->height; }
+    int getMaxCol(){ return this->maxCol; }
+    // ------------------    
     void write(const std::string &fileName){
       if(!( std::filesystem::exists("out") && std::filesystem::is_directory("out") )){ // guardar arquivos na pasta 'out'
         std::filesystem::create_directory("out");
