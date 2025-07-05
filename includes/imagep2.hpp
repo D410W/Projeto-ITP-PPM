@@ -79,5 +79,9 @@ namespace stc {
       this->pixels[y * this->width + x] = newValue;
     }
     // ------------------
+    void applyDiamSquare(int n, double rough, double weight){
+    
+    }
+    // ------------------
   };
 }
