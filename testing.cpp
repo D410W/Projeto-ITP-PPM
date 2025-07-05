@@ -17,6 +17,16 @@ int main(){
   // std::cout << thispaleta.printar();
 
   stc::ImageP3 imagem(30,30);
+  
+  stc::Cor thisPixel = imagem.getPixel(2,2);
+  
+  std::cout << (int)thisPixel.r << ' ' << (int)thisPixel.g << ' ' << (int)thisPixel.b << '\n';
+  
+  imagem.setPixel(2, 2, stc::Cor(200,180,160));
+  
+  thisPixel = imagem.getPixel(2,2);
+  
+  std::cout << (int)thisPixel.r << ' ' << (int)thisPixel.g << ' ' << (int)thisPixel.b << '\n';
 
   std::string fileName = "teste.ppm";
 
