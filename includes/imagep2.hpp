@@ -3,8 +3,6 @@
 #include <string>
 #include <filesystem>
 
-#include <iostream>
-
 #include "cor.hpp"
 
 namespace stc {
@@ -65,7 +63,6 @@ namespace stc {
       this->maxValue = mv;
       
       for(int i = 0; i < (this->height * this->width); i++){
-        if(i < 20) std::cout << value << '\n';
         inputFile >> value;
         this->pixels[i] = value;
       }
