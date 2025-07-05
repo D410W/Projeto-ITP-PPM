@@ -41,8 +41,12 @@ namespace stc {
       return;
     }
     // ------------------
-    void getPixel(){
-      
+    Cor getPixel(int x, int y){
+      return this->pixels[(y-1) * this->width + (x-1)];
+    }
+    // ------------------
+    void setPixel(int x, int y, Cor newColor){
+      this->pixels[(y-1) * this->width + (x-1)] = newColor;
     }
     // ------------------
     void drawBox(int x0, int y0, int x1, int y1, Cor color){
