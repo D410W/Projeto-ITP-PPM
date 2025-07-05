@@ -13,7 +13,7 @@ void drawBox(stc::ImageP3 &imagem, int x0, int y0, int x1, int y1, stc::Cor newC
 
 int main(){
 
-  stc::ImageP3 bandeira(20,30);
+  stc::ImageP3 bandeira(30,20);
   
   drawBox(bandeira, 0, 0, 9, 19, stc::Cor(255,0,0));
   drawBox(bandeira, 10, 0, 19, 19, stc::Cor(255,255,255));

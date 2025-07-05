@@ -13,8 +13,8 @@ namespace stc {
     unsigned char maxCol = 255;
     
   public:
-    ImageP3(int h, int w) : height(h), width(w), maxCol(255), pixels(new Cor[h*w]) {}
-    ImageP3(int h, int w, int maxvalue) : height(h), width(w), maxCol(maxvalue), pixels(new Cor[h*w]) {}
+    ImageP3(int w, int h) : height(h), width(w), maxCol(255), pixels(new Cor[h*w]) {} // largura (x) e altura (y)
+    ImageP3(int w, int h, int maxvalue) : height(h), width(w), maxCol(maxvalue), pixels(new Cor[h*w]) {}
 
     ~ImageP3(){
       delete[] pixels;
