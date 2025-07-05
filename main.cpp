@@ -2,8 +2,7 @@
 #include <iostream>
 #include <string>
 
-#include "paleta.hpp"
-#include "imagep3.hpp"
+#include "includes/header.hpp"
 
 int main(){
 
