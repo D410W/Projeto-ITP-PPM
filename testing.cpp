@@ -1,15 +1,24 @@
 #include <iostream>
 #include <string>
+#include <cmath>
+
+#include <random>
+#include <ctime>
 
 #include "includes/header.hpp"
 
 int main(){
+  std::srand(std::time(0));
+  
+  int n;
+  double rough;
+  std::cin >> n >> rough;
 
-  stc::ImageP2 mapa(30,20);
+  stc::ImageP2 mapa(std::pow(2, n)+1, std::pow(2, n)+1);
   
-  mapa.read("out/teste.ppm");
+  mapa.addDiamSquare(n, rough, 1);
   
-  std::cout << (int)mapa.getValue(2,2) << ' ' << mapa.getMaxVal() << ' ' << mapa.getWidth() << '\n';
+  mapa.write("diamond.ppm");
 
   return 0;
 }
