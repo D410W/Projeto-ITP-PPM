@@ -144,7 +144,7 @@ namespace stc {
       values[patternLength-1][patternLength-1] = std::rand()%256;
       
       int currx, curry, step;
-      int currSideSteps, halfSide; // represents 2^ni and 2^(ni-1)
+      int currSideIterations, halfSideIterations; // represents 2^ni and 2^(ni-1)
       for(int ni = 1; ni < n+1; ni++){
         currx = 0, curry = 0;
         step = (1 << (n-ni)); // distance from one point to another at the ni-th step.
