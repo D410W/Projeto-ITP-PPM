@@ -144,11 +144,11 @@ namespace stc {
       values[patternLength-1][patternLength-1] = std::rand()%256;
       
       int currx, curry, step;
-      int currSideLen, halfSide; // represents 2^ni and 2^(ni-1)
+      int currSideSteps, halfSide; // represents 2^ni and 2^(ni-1)
       for(int ni = 1; ni < n+1; ni++){
         currx = 0, curry = 0;
         step = (1 << (n-ni)); // distance from one point to another at the ni-th step.
-        currSideLen = (1 << ni); // represents 2^ni
+        currSideSteps = (1 << ni); // represents 2^ni
         halfSide = (1 << (ni - 1)); // represents 2^(ni-1)
         // diamond
         for(int i = 0; i < halfSide; i++){
@@ -166,59 +166,32 @@ namespace stc {
           }
         }
         // square
-        for(int i = 0; i < currSideLen + 1; i++){
-          if(i%2 == 0){ // first collumn
-            for(int j = 0; j < halfSide; j++){
-              int toSet = 0;
-              int sums = 0;
-              
-              if(i > 0){
-                toSet += values[(i-1)*step][step + 2*j*step];
-                sums++;
-              }
-              if(i < currSideLen){
-                toSet += values[(i+1)*step][step + 2*j*step];
-                sums++;
-              }
-              if(j > 0){
-                toSet += values[i*step][2*j*step - step];
-                sums++;
-              }
-              if(j < halfSide - 1){
-                toSet += values[i*step][2*step + 2*j*step];
-                sums++;
-              }
-              toSet /= sums;
-              toSet += ( std::rand()%33 - 16 )*rough;
-              
-              values[i*step][step + 2*j*step] = std::clamp(toSet, 0, 255);
-            }
-          } else { // second collumn
-            for(int j = 0; j < halfSide + 1; j++){
-              int toSet = 0;
-              int sums = 0;
+        for(int id = 0; id < currSideSteps + 1; id++){
+          int i = id*step;
+          for(int j = (id%2 == 0 ? step : 0); j < patternLength; j += 2*step){
+            int toSet = 0;
+            int sums = 0;
             
-              if(i > 0){
-                toSet += values[(i-1)*step][2*j*step];
-                sums++;
-              }
-              if(i < currSideLen){
-                toSet += values[(i+1)*step][2*j*step];
-                sums++;
-              }
-              if(j > 0){
-                toSet += values[i*step][2*j*step - step];
-                sums++;
-              }
-              if(j < halfSide - 1){
-                toSet += values[i*step][step + 2*j*step];
-                sums++;
-              }
-              toSet /= sums;
-              toSet += ( std::rand()%33 - 16 )*rough;
-            
-              values[i*step][2*j*step] = std::clamp(toSet, 0, 255);
+            if(i > 0){
+              toSet += values[i - step][j];
+              sums++;
             }
+            if(i < patternLength - 1){
+              toSet += values[i + step][j];
+              sums++;
+            }
+            if(j > 0){
+              toSet += values[i][j - step];
+              sums++;
+            }
+            if(j < patternLength - 1){
+              toSet += values[i][j + step];
+              sums++;
+            }
+            toSet /= sums;
+            toSet += ( std::rand()%33 - 16 )*rough; // from -16 to 16
+            
+            values[i][j] = std::clamp(toSet, 0, 255);
           }
         }
         
