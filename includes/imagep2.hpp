@@ -124,7 +124,7 @@ namespace stc {
       this->pixels[y * this->width + x] = newValue;
     }
     // ------------------
-    void addDiamSquare(int n, double rough, double weight){
+    void addDiamSquare(int n, double rough = 1, double ratio = 2, double weight = 1){
       if(n > 13 || n < 0){
         throw std::invalid_argument("Valor de n \'perigoso\' na funçao Diamond-Square.");
       }
@@ -160,7 +160,7 @@ namespace stc {
             toSet += values[2*(i+1)*step][2*j*step];
             toSet += values[2*(i+1)*step][2*(j+1)*step];
             toSet /= 4;
-            toSet += ( std::rand()%33 - 16 )*rough;
+            toSet += ( std::rand()%33 - 16 )*rough; // from -16 to 16
             
             values[step + 2*i*step][step + 2*j*step] = std::clamp(toSet, 0, 255);
           }
@@ -195,6 +195,7 @@ namespace stc {
           }
         }
         
+        rough /= ratio;
       }
       // return values
       for(int i = 0; i < std::min(patternLength, this->width); i++){

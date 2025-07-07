@@ -11,12 +11,12 @@ int main(){
   std::srand(std::time(0));
   
   int n;
-  double rough;
-  std::cin >> n >> rough;
+  double rough, ratio;
+  std::cin >> n >> rough >> ratio;
 
   stc::ImageP2 mapa(std::pow(2, n)+1, std::pow(2, n)+1);
   
-  mapa.addDiamSquare(n, rough, 1);
+  mapa.addDiamSquare(n, rough, ratio, 1);
   
   mapa.write("diamond.ppm");
 
