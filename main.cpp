@@ -116,7 +116,7 @@ void alterarP3(){
   std::cout << "\n\n------------------\n\n";
 }
 void alterarPal(){
-  std::cout << "\nPaleta - " << p3Name << "\n"
+  std::cout << "\nPaleta - " << palName << "\n"
             << pal.printar();
   std::cout << "\n [1] Importar arquivo \n [2] Exportar para arquivo \n [3] Adicionar cor \n"
             << " [4] Remover cor \n [5] Voltar\n";

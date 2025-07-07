@@ -68,16 +68,12 @@ namespace stc {
     }
     // ----------------
     std::string printar(){ // funçao de debug
-      std::string toOut = "Quantidade de cores: " + std::to_string(quantidade) + "\nCores:\n";
+      std::string toOut = "Quantidade de cores: " + std::to_string(quantidade) + "\nValor - (r, g, b):\n";
       for(int i = 0; i < quantidade; i++){
-        toOut += "{" + std::to_string(cores[i].r) + " " +
-                  std::to_string(cores[i].g) + " " +
-                  std::to_string(cores[i].b) + "}\n";
-      }
-
-      toOut += "Valores:\n";
-      for(int i = 0; i < quantidade; i++){
-        toOut += std::to_string(valores[i]) + "\n";
+        toOut += std::to_string(valores[i]) + " - "
+            "" + std::to_string(cores[i].r) + ", " +
+                  std::to_string(cores[i].g) + ", " +
+                  std::to_string(cores[i].b) + "\n";
       }
 
       return toOut;
