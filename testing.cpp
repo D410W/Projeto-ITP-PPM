@@ -10,15 +10,18 @@
 int main(){
   std::srand(std::time(0));
   
-  int n;
-  double rough, ratio;
-  std::cin >> n >> rough >> ratio;
+  int n = 8;
 
   stc::ImageP2 mapa(std::pow(2, n)+1, std::pow(2, n)+1);
+  mapa.addDiamSquare(n, 16, 2, 1);
   
-  mapa.addDiamSquare(n, rough, ratio, 1);
+  stc::Paleta pallet;
+  pallet.read("pal.txt");
   
-  mapa.write("diamond.ppm");
+  stc::ImageP3 imagem(std::pow(2, n)+1, std::pow(2, n)+1);
+  imagem.fromImageP2(mapa, pallet);
+  
+  imagem.write("imageColor.ppm");
 
   return 0;
 }

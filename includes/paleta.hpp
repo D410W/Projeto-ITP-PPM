@@ -2,6 +2,7 @@
 
 #include <string>
 #include <fstream>
+#include <algorithm>
 
 #include "cor.hpp"
 
@@ -12,9 +13,15 @@ namespace stc {
     int quantidade;
     Cor cores[100];
     int valores[100];
+    // ----------------
+    void trocar(int pos1, int pos2){
+      if(pos1 < 0 or pos2 < 0) throw std::invalid_argument("Posiçao negativa na troca de cores de Paleta");
+      
+      std::swap(this->cores[pos1], this->cores[pos2]);
+      std::swap(this->valores[pos1], this->valores[pos2]);
+    }
   public:
     Paleta() : quantidade(0) {} // inicializador vazio
-    // ----------------
     Paleta(int newQtd, std::initializer_list<Cor> newCores, std::initializer_list<int> newValores) { // inicializador pronto
       quantidade = newQtd;
       
@@ -25,10 +32,28 @@ namespace stc {
       for (const auto& v : newValores) valores[i++] = v;
     }
     // ----------------
-    void adicionar(Cor newCor, int newValor){ // adicionar uma cor no final
-      cores[quantidade] = newCor;
-      valores[quantidade] = newValor;
+    void adicionar(Cor newCor, int newValor){ // adicionar uma cor
+      for(int i = 0; i < this->quantidade; i++){
+        if(this->valores[i] > newValor){
+          
+          for(int j = this->quantidade - 1; j >= i; j--){
+            this->trocar(j+1, j);
+          }
+          
+          this->valores[i] = newValor;
+          this->cores[i] = newCor;
+          
+          break;
+        }
+      }
       quantidade++;
+    }
+    // ----------------
+    void remover(int pos){ // remover a cor na posiçao
+      for(int i = pos; i < this->quantidade; i++){
+        this->trocar(i, i+1);
+      }
+      quantidade--;
     }
     // ----------------
     Cor getCor(int thisValor){
@@ -36,6 +61,10 @@ namespace stc {
         if(thisValor < valores[i]) return cores[i];
       }
       return {0,0,0};
+    }
+    // ----------------
+    int getQtd(){
+      return this->quantidade;
     }
     // ----------------
     std::string printar(){ // funçao de debug

@@ -17,18 +17,19 @@ namespace stc {
     unsigned char maxValue = 255;
     
     void deepCopy(const ImageP2& other) { // helper function for deep copying
-        height = other.height;
-        width = other.width;
-        maxValue = other.maxValue;
+        this->height = other.height;
+        this->width = other.width;
+        this->maxValue = other.maxValue;
         if (other.pixels) { // other.pixels != nullptr
-            pixels = new unsigned char[width * height];
-            std::copy(other.pixels, other.pixels + (width * height), pixels);
+            this->pixels = new unsigned char[width * height];
+            std::copy(other.pixels, other.pixels + (this->width * this->height), this->pixels);
         } else { // other.pixels == nullptr
-            pixels = nullptr;
+            this->pixels = nullptr;
         }
     }
   public:
     // initializer methods
+    ImageP2() : height(0), width(0), maxValue(255), pixels(nullptr) {}
     ImageP2(int w, int h) : height(h), width(w), maxValue(255) { // inicializador apenas com largura e altura
        if (w <= 0 || h <= 0) {
         throw std::invalid_argument("Largura e altura devem ser positivas.");
@@ -200,7 +201,7 @@ namespace stc {
       // return values
       for(int i = 0; i < std::min(patternLength, this->width); i++){
         for(int j = 0; j < std::min(patternLength, this->height); j++){
-          this->pixels[j*(this->width) + i] = values[i][j]*weight;
+          this->setValue( i, j, values[i][j]*weight );
         }
       }
       
