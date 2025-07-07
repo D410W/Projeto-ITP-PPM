@@ -148,11 +148,11 @@ namespace stc {
       for(int ni = 1; ni < n+1; ni++){
         currx = 0, curry = 0;
         step = (1 << (n-ni)); // distance from one point to another at the ni-th step.
-        currSideSteps = (1 << ni); // represents 2^ni
-        halfSide = (1 << (ni - 1)); // represents 2^(ni-1)
+        currSideIterations = (1 << ni); // represents 2^ni
+        halfSideIterations = (1 << (ni - 1)); // represents 2^(ni-1)
         // diamond
-        for(int i = 0; i < halfSide; i++){
-          for(int j = 0; j < halfSide; j++){
+        for(int i = 0; i < halfSideIterations; i++){
+          for(int j = 0; j < halfSideIterations; j++){
             int toSet = 0;
             
             toSet += values[2*i*step][2*j*step]; // all 4 corners
@@ -166,7 +166,7 @@ namespace stc {
           }
         }
         // square
-        for(int id = 0; id < currSideSteps + 1; id++){
+        for(int id = 0; id < currSideIterations + 1; id++){
           int i = id*step;
           for(int j = (id%2 == 0 ? step : 0); j < patternLength; j += 2*step){
             int toSet = 0;
