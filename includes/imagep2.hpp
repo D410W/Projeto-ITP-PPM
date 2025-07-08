@@ -22,7 +22,7 @@ namespace stc {
         this->maxValue = other.maxValue;
         if (other.pixels) { // other.pixels != nullptr
             this->pixels = new unsigned char[width * height];
-            std::copy(other.pixels, other.pixels + (this->width * this->height), this->pixels);
+            std::copy(other.pixels, other.pixels + (this->width * this->height), this->pixels); // inicio do array, fim do array, array do outro
         } else { // other.pixels == nullptr
             this->pixels = nullptr;
         }
@@ -46,7 +46,7 @@ namespace stc {
     ImageP2(const ImageP2& other) : pixels(nullptr) { // copy initializer ()
         deepCopy(other);
     }
-    ImageP2& operator=(const ImageP2& other){ // copy assignment=
+    ImageP2& operator=(const ImageP2& other){ // copy assignment =
         if(this == &other){
             return *this;
         }
