@@ -73,20 +73,20 @@ void alterarP2(){
 }
 void alterarP3(){
   std::cout << "\nImageP3 - " << p3Name << "\n";
-  std::cout << "\n [1] Importar arquivo \n [2] Exportar para arquivo \n [3] Criar a partir de P2 e Paleta \n"
-            << " [4]  \n [5] Voltar\n";
+  std::cout << "\n [1]  \n [2] Exportar para arquivo \n [3] Criar a partir de P2 e Paleta \n"
+            << " [4] Aplicar sombreamento a partir de P2 \n [5] Voltar\n";
   
   int op;
   std::cin >> op;
   
   switch(op){
   case 1: {
-    std::cout << "Caminho do arquivo: ";
+    // std::cout << "Caminho do arquivo: ";
   
-    std::string theFile = "";
-    std::cin >> theFile;
+    // std::string theFile = "";
+    // std::cin >> theFile;
     
-    p3Name = theFile;
+    // p3Name = theFile;
     
     // p3.read(theFile);
     break;
@@ -108,8 +108,18 @@ void alterarP3(){
     
     break;
   }
-  case 4:
+  case 4: {
+    std::cout << "Digite a intensidade do sombreamento, e '1' ou '0' se deseja que seja proporcional, ou nao a diferença de altura.\n";
+    
+    int intens;
+    int prop;
+    
+    std::cin >> intens >> prop;
+    
+    p3.addShadow(p2, intens, (bool)prop);
+    
     break;
+  }
   case 5:
     break;
   }

@@ -91,5 +91,21 @@ namespace stc {
       }
     }
     // ------------------
+    void addShadow(ImageP2 p2, double intensity, bool proportional = true){
+      for(int i = 1; i < this->width; i++){
+        for(int j = 1; j < this->height; j++){
+          int diff = p2.getValue(i-1, j-1) - p2.getValue(i, j);
+          
+          if(diff <= 0) continue;
+          
+          if(proportional){
+            this->setPixel(i, j, this->getPixel(i, j) - diff*intensity );
+          } else {
+            this->setPixel(i, j, this->getPixel(i, j) - (int)intensity );
+          }
+        }
+      } 
+    }
+    // ------------------
   };
 }
