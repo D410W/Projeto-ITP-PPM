@@ -26,13 +26,22 @@ namespace stc {
       quantidade = newQtd;
       
       int i = 0;
-      for (const auto& c : newCores) cores[i++] = c;
+      for(const auto& c : newCores) cores[i++] = c;
       
       i = 0;
-      for (const auto& v : newValores) valores[i++] = v;
+      for(const auto& v : newValores) valores[i++] = v;
     }
     // ----------------
     void adicionar(Cor newCor, int newValor){ // adicionar uma cor
+      if( (quantidade == 0) or (newValor > this->valores[this->quantidade-1]) ){
+      
+        this->cores[this->quantidade] = newCor;
+        this->valores[this->quantidade] = newValor;
+        this->quantidade++;
+        
+        return;
+      }
+      
       for(int i = 0; i < this->quantidade; i++){
         if(this->valores[i] > newValor){
           
@@ -46,7 +55,7 @@ namespace stc {
           break;
         }
       }
-      quantidade++;
+      this->quantidade++;
     }
     // ----------------
     void remover(int pos){ // remover a cor na posiçao
