@@ -131,7 +131,13 @@ namespace stc {
       }
       int patternLength = (1 << n) + 1;
       
-      std::vector<std::vector<unsigned char>> values(patternLength, std::vector<unsigned char>(patternLength));
+      unsigned char **values = new unsigned char *[patternLength];
+      
+      for(int i = 0; i < patternLength; i++){
+        values[i] = new unsigned char[patternLength];
+      }
+      
+      // std::vector<std::vector<unsigned char>> values(patternLength, std::vector<unsigned char>(patternLength));
       
       for(int i = 0; i < patternLength; i++){
         for(int j = 0; j < patternLength; j++){
@@ -204,6 +210,11 @@ namespace stc {
           this->setValue( i, j, values[i][j]*weight );
         }
       }
+      
+      for(int i = 0; i < patternLength; i++){
+        delete[] values[i];
+      }
+      delete[] values;
       
       return;
     }
