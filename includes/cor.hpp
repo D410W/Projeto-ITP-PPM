@@ -12,7 +12,7 @@ namespace stc {
               g(std::clamp(g1, 0, 255)),
               b(std::clamp(b1, 0, 255)) {}
               
-    // Pixel - Pixel
+    // Cor - Cor
     Cor operator-(const Cor& other) const {
         return Cor(
             int(std::clamp(int(r) - int(other.r), 0, 255)),
@@ -21,7 +21,7 @@ namespace stc {
         );
     }
     
-    // Pixel - int
+    // Cor - int
     Cor operator-(int other) const {
         return Cor(
             int(std::clamp(int(r) - int(other), 0, 255)),
@@ -30,7 +30,7 @@ namespace stc {
         );
     }
     
-    // Pixel * double
+    // Cor * double
     Cor operator*(double other) const {
         return Cor(
             int(std::clamp(int(r * other), 0, 255)),
@@ -39,7 +39,7 @@ namespace stc {
         );   
     }
     
-    // Pixel += Pixel
+    // Cor += Cor
     Cor& operator+=(const Cor& other) {
         r = std::clamp(int(r) + int(other.r), 0, 255);
         g = std::clamp(int(g) + int(other.g), 0, 255);
@@ -47,7 +47,7 @@ namespace stc {
         return *this;
     }
     
-    // Pixel -= Pixel
+    // Cor -= Cor
     Cor& operator-=(const Cor& other) {
         r = std::clamp(int(r) - int(other.r), 0, 255);
         g = std::clamp(int(g) - int(other.g), 0, 255);
@@ -55,7 +55,7 @@ namespace stc {
         return *this;
     }
     
-    // Pixel -= int
+    // Cor -= int
     Cor& operator-=(int other) {
         r = std::clamp(int(r) - int(other), 0, 255);
         g = std::clamp(int(g) - int(other), 0, 255);
@@ -64,7 +64,7 @@ namespace stc {
     }
   };
 
-  // int - Pixel
+  // int - Cor
   inline Cor operator-(int value, const Cor& p) {
     return Cor(
         std::clamp(value - int(p.r), 0, 255),
