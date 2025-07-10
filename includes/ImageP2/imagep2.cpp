@@ -5,8 +5,8 @@
 #include <random>
 #include <vector>
 
+#include "../cor.hpp"
 #include "imagep2.hpp"
-#include "cor.hpp"
 
 namespace stc {
 // private methods:

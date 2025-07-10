@@ -7,7 +7,7 @@
 #include <random>
 #include <fstream>
 
-#include "cor.hpp"
+#include "../cor.hpp"
 
 namespace stc {
   class ImageP2 { // alocaçao dinamica de um array[linhas*colunas]
