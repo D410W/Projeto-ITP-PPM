@@ -1,4 +1,4 @@
 #include "cor.hpp"
-#include "paleta.hpp"
-#include "imagep3.hpp"
-#include "imagep2.hpp"
+#include "ImageP2/paleta.hpp"
+#include "ImageP2/imagep3.hpp"
+#include "ImageP2/imagep2.hpp"
