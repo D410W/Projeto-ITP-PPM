@@ -3,7 +3,7 @@
 #include <cmath>
 #include <algorithm>
 #include <random>
-#include <vector>
+#include <iostream>
 
 #include "../cor.hpp"
 #include "imagep2.hpp"
@@ -26,14 +26,14 @@ namespace stc {
     if (w <= 0 || h <= 0) {
       throw std::invalid_argument("Largura e altura devem ser positivas.");
     }
-    this->pixels = new unsigned char[w * h];
+    this->pixels = new unsigned char[w * h]();
   }
 
   ImageP2::ImageP2(int w, int h, int newMax) : height(h), width(w), maxValue(newMax) { // init. com largura, altura e valor max.
     if (w <= 0 || h <= 0) {
       throw std::invalid_argument("Largura e altura devem ser positivas.");
     }
-    this->pixels = new unsigned char[w * h];
+    this->pixels = new unsigned char[w * h]();
   }
   // ------------------
   ImageP2& ImageP2::operator=(const ImageP2& other){ // copy assignment =
@@ -52,6 +52,7 @@ namespace stc {
   void ImageP2::write(const std::string &fileName){
     if(!( std::filesystem::exists("out") && std::filesystem::is_directory("out") )){ // guardar arquivos na pasta 'out'
       std::filesystem::create_directory("out");
+      std::cout << "Criando diretorio de saida 'out/'." << std::endl;
     }
     
     std::ofstream outputFile("out/"+fileName);
