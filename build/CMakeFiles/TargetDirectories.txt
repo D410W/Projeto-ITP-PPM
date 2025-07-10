@@ -1,0 +1,3 @@
+/home/thales/Documents/coding/ProjetoITP/build/CMakeFiles/my_executable.dir
+/home/thales/Documents/coding/ProjetoITP/build/CMakeFiles/edit_cache.dir
+/home/thales/Documents/coding/ProjetoITP/build/CMakeFiles/rebuild_cache.dir
