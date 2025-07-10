@@ -31,7 +31,6 @@ namespace stc {
     }
     
     ImageP2& operator=(const ImageP2& other); // copy assignment =
-    
     // destructor
     ~ImageP2(){
       delete[] this->pixels;
@@ -42,10 +41,6 @@ namespace stc {
     int getHeight(){ return this->height; }
     int getMaxVal(){ return this->maxValue; }
     // ------------------
-    void write(const std::string &fileName);
-    // ------------------
-    void read(const std::string &fileName);
-    // ------------------
     unsigned char getValue(int x, int y){
       return this->pixels[y * this->width + x];
     }
@@ -53,6 +48,10 @@ namespace stc {
     void setValue(int x, int y, unsigned char newValue){
       this->pixels[y * this->width + x] = newValue;
     }
+    // ------------------
+    void write(const std::string &fileName);
+    // ------------------
+    void read(const std::string &fileName);
     // ------------------
     void addDiamSquare(int n, double rough, double ratio, double weight);
     // ------------------

@@ -19,14 +19,19 @@ namespace stc {
   public:
     ImageP3() : width(0), height(0), maxCol(255), pixels(nullptr) {}
 
-    ImageP3(int w, int h) : width(w), height(h), maxCol(255), pixels(new Cor[h*w]) {} // largura (x) e altura (y)
+    ImageP3(int w, int h); // largura (x) e altura (y)
 
-    ImageP3(int w, int h, int newMax) : width(w), height(h), maxCol(newMax), pixels(new Cor[h*w]) {}
+    ImageP3(int w, int h, int newMax);
+    
+    ImageP3(const ImageP3& other) : pixels(nullptr) { // copy initializer ()
+      this->deepCopy(other);
+    }
 
     ImageP3& operator=(const ImageP3& other); // copy assignment=
     
     ~ImageP3(){
-      delete[] pixels;
+      delete[] this->pixels;
+      this->pixels = nullptr;
     }
     // ------------------
     int getWidth(){ return this->width; }
@@ -36,7 +41,7 @@ namespace stc {
     Cor getPixel(int x, int y){
       return this->pixels[y * this->width + x];
     }
-    // ------------------
+    
     void setPixel(int x, int y, const Cor &newColor){
       this->pixels[y * this->width + x] = newColor;
     }

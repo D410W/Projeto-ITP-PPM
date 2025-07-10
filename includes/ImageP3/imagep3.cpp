@@ -20,6 +20,20 @@ namespace stc {
     }
   }
 // public methods:
+  ImageP3::ImageP3(int w, int h) : width(w), height(h), maxCol(255) { // largura (x) e altura (y)
+    if (w <= 0 || h <= 0) {
+      throw std::invalid_argument("Largura e altura devem ser positivas.");
+    }
+    this->pixels = new Cor[h*w]();
+  }
+  
+  ImageP3::ImageP3(int w, int h, int newMax) : width(w), height(h), maxCol(newMax) {
+    if (w <= 0 || h <= 0) {
+      throw std::invalid_argument("Largura e altura devem ser positivas.");
+    }
+    this->pixels = new Cor[h*w]();
+  }
+  // ------------------
   ImageP3& ImageP3::operator=(const ImageP3& other){ // copy assignment=
     if(this == &other){
       return *this;
