@@ -100,7 +100,7 @@ namespace stc {
     return;
   }
   // ------------------
-  void ImageP2::addDiamSquare(int n, double rough = 1, double ratio = 2, double weight = 1){
+  void ImageP2::addDiamSquare(int n, double rough = 1, double ratio = 1, double weight = 1){
     if(n > 13 || n < 0){
       throw std::invalid_argument("Valor de n \'perigoso\' na funçao Diamond-Square.");
     }
