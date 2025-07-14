@@ -127,7 +127,7 @@ namespace stc {
     
     int currx, curry, step;
     int currSideIterations, halfSideIterations; // represents 2^ni and 2^(ni-1)
-    for(int ni = 1; ni < n+1; ni++){
+    for(int ni = 1; ni <= n; ni++){
       currx = 0, curry = 0;
       step = (1 << (n-ni)); // distance from one point to another at the ni-th step.
       currSideIterations = (1 << ni); // represents 2^ni
@@ -137,14 +137,17 @@ namespace stc {
         for(int j = 0; j < halfSideIterations; j++){
           int toSet = 0;
           
-          toSet += values[2*i*step][2*j*step]; // all 4 corners
-          toSet += values[2*i*step][2*(j+1)*step];
-          toSet += values[2*(i+1)*step][2*j*step];
-          toSet += values[2*(i+1)*step][2*(j+1)*step];
-          toSet /= 4;
-          toSet += ( std::rand()%33 - 16 )*rough; // from -16 to 16
+          int uppLeftCornerx = 2*i*step;
+          int uppLeftCornery = 2*j*step;
           
-          values[step + 2*i*step][step + 2*j*step] = std::clamp(toSet, 0, 255);
+          toSet += values[uppLeftCornerx][uppLeftCornery]; // all 4 corners
+          toSet += values[uppLeftCornerx][uppLeftCornery + 2*step];
+          toSet += values[uppLeftCornerx + 2*step][uppLeftCornery];
+          toSet += values[uppLeftCornerx + 2*step][uppLeftCornery + 2*step];
+          toSet /= 4;
+          toSet += ( std::rand()%33 - 16 )*rough; // from -16*rough to 16*rough
+          
+          values[step + uppLeftCornerx][step + uppLeftCornery] = std::clamp(toSet, 0, 255);
         }
       }
       // square
