@@ -1,4 +1,1 @@
-/build/* linguist-generated=true
-**/*Makefile* linguist-generated=true
-**/*.ts linguist-generated=true
-**/*.make linguist-generated=true
+/build/** linguist-generated=true
