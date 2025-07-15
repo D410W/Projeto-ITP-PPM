@@ -59,7 +59,8 @@ void alterarP2(){
   case 4: {
     std::cout << "Insira 'n', 'roughness' e 'ratio': ";
     
-    int n, rough, ratio;
+    int n;
+    double rough, ratio;
     std::cin >> n >> rough >> ratio;
     
     p2.addDiamSquare(n, rough, ratio, 1);
@@ -109,7 +110,7 @@ void alterarP3(){
     break;
   }
   case 4: {
-    std::cout << "Digite a intensidade do sombreamento, e '1' ou '0' se deseja que seja proporcional, ou nao a diferença de altura.\n";
+    std::cout << "Digite a intensidade do sombreamento, e '1' ou '0' se deseja que seja proporcional, ou nao, em relaçao a diferença de altura.\n";
     
     int intens;
     int prop;
