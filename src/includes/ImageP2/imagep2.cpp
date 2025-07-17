@@ -196,4 +196,25 @@ namespace stc {
     return;
   }
   // ------------------
+  void ImageP2::amplify(){
+    int minimumValue = 256, maximumValue = -1;
+    
+    for(int i = 0; i < this->width; i++){
+      for(int j = 0; j < this->height; j++){
+        if(this->getValue(i, j) < minimumValue) minimumValue = this->getValue(i, j);
+        if(this->getValue(i, j) > maximumValue) maximumValue = this->getValue(i, j);
+      }
+    }
+    
+    double newRatio = 255.0/(double)(maximumValue-minimumValue);
+
+    for(int i = 0; i < this->width; i++){
+      for(int j = 0; j < this->height; j++){
+        // std::cout << (int)this->getValue(i, j) << '\n';
+        this->setValue( i, j, (int)( (this->getValue(i, j)-minimumValue )*newRatio) );
+        // std::cout << (int)this->getValue(i, j) << '\n';
+      }
+    }
+  }
+  // ------------------
 }

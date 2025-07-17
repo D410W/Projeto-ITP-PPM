@@ -19,7 +19,7 @@ stc::Paleta pal;
 void alterarP2(){
   std::cout << "\nImageP2 - " << p2Name << "\n";
   std::cout << "\n [1] Importar arquivo \n [2] Exportar para arquivo \n [3] Criar nova imagem \n"
-            << " [4] Aplicar Diamond-Square noise \n [5] Voltar\n";
+            << " [4] Aplicar Diamond-Square noise \n [5] normalizar alturas \n [6] Voltar\n";
   
   int op;
   std::cin >> op;
@@ -67,7 +67,11 @@ void alterarP2(){
     
     break;
   }
-  case 5:
+  case 5: {
+    p2.amplify();
+    break;
+  }
+  case 6:
     break;
   }
   std::cout << "\n\n------------------\n\n";
@@ -112,7 +116,7 @@ void alterarP3(){
   case 4: {
     std::cout << "Digite a intensidade do sombreamento, e '1' ou '0' se deseja que seja proporcional, ou nao, em relaçao a diferença de altura.\n";
     
-    int intens;
+    double intens;
     int prop;
     
     std::cin >> intens >> prop;

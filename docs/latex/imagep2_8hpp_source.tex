@@ -1,0 +1,67 @@
+\doxysection{imagep2.\+hpp}
+\hypertarget{imagep2_8hpp_source}{}\label{imagep2_8hpp_source}\index{src/includes/ImageP2/imagep2.hpp@{src/includes/ImageP2/imagep2.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <filesystem>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <cmath>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <algorithm>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <random>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}../cor.hpp"{}}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{namespace\ }stc\ \{}
+\DoxyCodeLine{00013\ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classstc_1_1ImageP2}{ImageP2}}\ \{\ \textcolor{comment}{//\ alocaçao\ dinamica\ de\ um\ array[linhas*colunas]}}
+\DoxyCodeLine{00014\ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keywordtype}{int}\ height,\ width;}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ *pixels\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ maxValue\ =\ 255;}
+\DoxyCodeLine{00018\ \ \ \ \ }
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{void}\ deepCopy(\textcolor{keyword}{const}\ \mbox{\hyperlink{classstc_1_1ImageP2}{ImageP2}}\&\ other);\ \textcolor{comment}{//\ helper\ function\ for\ deep\ copying}}
+\DoxyCodeLine{00020\ \ \ \ \ }
+\DoxyCodeLine{00021\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{comment}{//\ initializer\ methods}}
+\DoxyCodeLine{00023\ \ \ \ \ \mbox{\hyperlink{classstc_1_1ImageP2}{ImageP2}}()\ :\ height(0),\ width(0),\ maxValue(255),\ pixels(\textcolor{keyword}{nullptr})\ \{\}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \ \ \ \ \mbox{\hyperlink{classstc_1_1ImageP2}{ImageP2}}(\textcolor{keywordtype}{int}\ w,\ \textcolor{keywordtype}{int}\ h);\ \textcolor{comment}{//\ inicializador\ apenas\ com\ largura\ e\ altura}}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ \mbox{\hyperlink{classstc_1_1ImageP2}{ImageP2}}(\textcolor{keywordtype}{int}\ w,\ \textcolor{keywordtype}{int}\ h,\ \textcolor{keywordtype}{int}\ newMax);\ \textcolor{comment}{//\ init.\ com\ largura,\ altura\ e\ valor\ max.}}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{comment}{//\ copy\ methods}}
+\DoxyCodeLine{00029\ \ \ \ \ \mbox{\hyperlink{classstc_1_1ImageP2}{ImageP2}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classstc_1_1ImageP2}{ImageP2}}\&\ other)\ :\ pixels(\textcolor{keyword}{nullptr})\ \{\ \textcolor{comment}{//\ copy\ initializer\ ()}}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ this-\/>deepCopy(other);}
+\DoxyCodeLine{00031\ \ \ \ \ \}}
+\DoxyCodeLine{00032\ \ \ \ \ }
+\DoxyCodeLine{00033\ \ \ \ \ \mbox{\hyperlink{classstc_1_1ImageP2}{ImageP2}}\&\ operator=(\textcolor{keyword}{const}\ \mbox{\hyperlink{classstc_1_1ImageP2}{ImageP2}}\&\ other);\ \textcolor{comment}{//\ copy\ assignment\ =}}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{comment}{//\ destructor}}
+\DoxyCodeLine{00035\ \ \ \ \ \mbox{\hyperlink{classstc_1_1ImageP2}{\string~ImageP2}}()\{}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \textcolor{keyword}{delete}[]\ this-\/>pixels;}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ this-\/>pixels\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00038\ \ \ \ \ \}}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{int}\ getWidth()\{\ \textcolor{keywordflow}{return}\ this-\/>width;\ \}}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{int}\ getHeight()\{\ \textcolor{keywordflow}{return}\ this-\/>height;\ \}}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{int}\ getMaxVal()\{\ \textcolor{keywordflow}{return}\ this-\/>maxValue;\ \}}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ getValue(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y)\{}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this-\/>pixels[y\ *\ this-\/>width\ +\ x];}
+\DoxyCodeLine{00046\ \ \ \ \ \}}
+\DoxyCodeLine{00047\ \ \ \ \ }
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{void}\ setValue(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ newValue)\{}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ this-\/>pixels[y\ *\ this-\/>width\ +\ x]\ =\ newValue;}
+\DoxyCodeLine{00050\ \ \ \ \ \}}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{void}\ write(\textcolor{keyword}{const}\ std::string\ \&fileName);}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{void}\ read(\textcolor{keyword}{const}\ std::string\ \&fileName);}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{void}\ addDiamSquare(\textcolor{keywordtype}{int}\ n,\ \textcolor{keywordtype}{double}\ rough,\ \textcolor{keywordtype}{double}\ ratio,\ \textcolor{keywordtype}{double}\ weight);}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordtype}{void}\ amplify();}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00060\ \ \ \};}
+\DoxyCodeLine{00061\ \}}
+
+\end{DoxyCode}

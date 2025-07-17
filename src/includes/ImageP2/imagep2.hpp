@@ -55,5 +55,7 @@ namespace stc {
     // ------------------
     void addDiamSquare(int n, double rough, double ratio, double weight);
     // ------------------
+    void amplify();
+    // ------------------
   };
 }

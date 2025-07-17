@@ -1,0 +1,90 @@
+\doxysection{stc\+::Cor Struct Reference}
+\hypertarget{structstc_1_1Cor}{}\label{structstc_1_1Cor}\index{stc::Cor@{stc::Cor}}
+
+
+Represents an RGB color with red, green, and blue values.  
+
+
+
+
+{\ttfamily \#include $<$cor.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structstc_1_1Cor_a1ad88e5f444736fe3154ac063db45aac}{Cor}} ()
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structstc_1_1Cor_aeda8daf99eaa83d4fcf4f97bd62ca23f}{Cor}} (int r1, int g1, int b1)
+\begin{DoxyCompactList}\small\item\em Parameterized constructor. \end{DoxyCompactList}\item 
+\Hypertarget{structstc_1_1Cor_a2548877a0d07f61bfe89b82b49e46717}\label{structstc_1_1Cor_a2548877a0d07f61bfe89b82b49e46717} 
+\mbox{\hyperlink{structstc_1_1Cor}{Cor}} {\bfseries operator-\/} (const \mbox{\hyperlink{structstc_1_1Cor}{Cor}} \&other) const
+\item 
+\Hypertarget{structstc_1_1Cor_aa7e51907f0e482071bb1baeac39d1f9f}\label{structstc_1_1Cor_aa7e51907f0e482071bb1baeac39d1f9f} 
+\mbox{\hyperlink{structstc_1_1Cor}{Cor}} {\bfseries operator-\/} (int other) const
+\item 
+\Hypertarget{structstc_1_1Cor_a93321de56dcc33271a0503ce85d735ae}\label{structstc_1_1Cor_a93321de56dcc33271a0503ce85d735ae} 
+\mbox{\hyperlink{structstc_1_1Cor}{Cor}} {\bfseries operator\texorpdfstring{$\ast$}{*}} (double other) const
+\item 
+\Hypertarget{structstc_1_1Cor_ac6c697a477c353a7da16d1b2d9e06f26}\label{structstc_1_1Cor_ac6c697a477c353a7da16d1b2d9e06f26} 
+\mbox{\hyperlink{structstc_1_1Cor}{Cor}} \& {\bfseries operator+=} (const \mbox{\hyperlink{structstc_1_1Cor}{Cor}} \&other)
+\item 
+\Hypertarget{structstc_1_1Cor_a8dfe37e5aee72f992f36997a557cccea}\label{structstc_1_1Cor_a8dfe37e5aee72f992f36997a557cccea} 
+\mbox{\hyperlink{structstc_1_1Cor}{Cor}} \& {\bfseries operator-\/=} (const \mbox{\hyperlink{structstc_1_1Cor}{Cor}} \&other)
+\item 
+\Hypertarget{structstc_1_1Cor_a9e637fb547c77f9082bb2c3abb9b1924}\label{structstc_1_1Cor_a9e637fb547c77f9082bb2c3abb9b1924} 
+\mbox{\hyperlink{structstc_1_1Cor}{Cor}} \& {\bfseries operator-\/=} (int other)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{structstc_1_1Cor_a9d169217339882f884121bd9fb6265bd}\label{structstc_1_1Cor_a9d169217339882f884121bd9fb6265bd} 
+unsigned char {\bfseries r} = 0
+\item 
+\Hypertarget{structstc_1_1Cor_a53ba2e038fdb0512aeffb17fbd7d3755}\label{structstc_1_1Cor_a53ba2e038fdb0512aeffb17fbd7d3755} 
+unsigned char {\bfseries g} = 0
+\item 
+\Hypertarget{structstc_1_1Cor_a6a5868121960f2b2f5210744c648680e}\label{structstc_1_1Cor_a6a5868121960f2b2f5210744c648680e} 
+unsigned char {\bfseries b} = 0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents an RGB color with red, green, and blue values. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{structstc_1_1Cor_a1ad88e5f444736fe3154ac063db45aac}\label{structstc_1_1Cor_a1ad88e5f444736fe3154ac063db45aac} 
+\index{stc::Cor@{stc::Cor}!Cor@{Cor}}
+\index{Cor@{Cor}!stc::Cor@{stc::Cor}}
+\doxysubsubsection{\texorpdfstring{Cor()}{Cor()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily stc\+::\+Cor\+::\+Cor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Default constructor. 
+
+Initializes the color to black (0, 0, 0). \Hypertarget{structstc_1_1Cor_aeda8daf99eaa83d4fcf4f97bd62ca23f}\label{structstc_1_1Cor_aeda8daf99eaa83d4fcf4f97bd62ca23f} 
+\index{stc::Cor@{stc::Cor}!Cor@{Cor}}
+\index{Cor@{Cor}!stc::Cor@{stc::Cor}}
+\doxysubsubsection{\texorpdfstring{Cor()}{Cor()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily stc\+::\+Cor\+::\+Cor (\begin{DoxyParamCaption}\item[{int}]{r1,  }\item[{int}]{g1,  }\item[{int}]{b1 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Parameterized constructor. 
+
+Initializes the color with specified red, green, and blue values.
+
+
+\begin{DoxyParams}{Parameters}
+{\em r1} & The red component value (0-\/255). \\
+\hline
+{\em g1} & The green component value (0-\/255). \\
+\hline
+{\em b1} & The blue component value (0-\/255). \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/includes/cor.\+hpp\end{DoxyCompactItemize}
