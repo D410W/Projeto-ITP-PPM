@@ -51,7 +51,7 @@ namespace stc {
     // ------------------
     void write(const std::string &fileName);
     // ------------------
-    void read(const std::string &fileName);
+    bool read(const std::string &fileName);
     // ------------------
     void addDiamSquare(int n, double rough, double ratio, double weight);
     // ------------------

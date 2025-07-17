@@ -31,9 +31,9 @@ void alterarP2(){
     std::string theFile = "";
     std::cin >> theFile;
     
-    p2Name = theFile;
+    bool sucesso = p2.read(theFile);
     
-    p2.read(theFile);
+    if(sucesso) p2Name = theFile;
     break;
   }
   case 2: {
@@ -146,9 +146,9 @@ void alterarPal(){
     std::string theFile = "";
     std::cin >> theFile;
     
-    palName = theFile;
+    bool sucesso = pal.read(theFile);
     
-    pal.read(theFile);
+    if(sucesso) palName = theFile;
     break;
   }
   case 2: {

@@ -1,6 +1,10 @@
 #include <string>
 #include <fstream>
 #include <algorithm>
+#include <iostream>
+
+#include <thread>
+#include <chrono>
 
 #include "../cor.hpp"
 #include "paleta.hpp"
@@ -79,11 +83,14 @@ namespace stc {
     file.close();
   }
   // ----------------
-  void Paleta::read(std::string dir){
+  bool Paleta::read(std::string dir){
     std::ifstream file(dir);
 
     if(!file.is_open()){
-      throw std::runtime_error("Arquivo \'" + dir + "\' nao encontrado.");
+      // throw std::runtime_error("Arquivo \'" + dir + "\' nao encontrado.");
+      std::cout << "Arquivo \'" + dir + "\' nao encontrado." << '\n';
+      std::this_thread::sleep_for(std::chrono::seconds(1));
+      return false;
     }
     
     file >> quantidade;
@@ -97,6 +104,7 @@ namespace stc {
     }
 
     file.close();
+    return true;
   }
   // ----------------
 }

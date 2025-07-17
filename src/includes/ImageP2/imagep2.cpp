@@ -5,6 +5,9 @@
 #include <random>
 #include <iostream>
 
+#include <chrono>
+#include <thread>
+
 #include "../cor.hpp"
 #include "imagep2.hpp"
 
@@ -71,14 +74,24 @@ namespace stc {
     return;
   }
   // ------------------
-  void ImageP2::read(const std::string &fileName){
+  bool ImageP2::read(const std::string &fileName){
     std::ifstream inputFile(fileName);
+    
+    if(!inputFile.is_open()){
+      // throw std::runtime_error("Arquivo \'" + dir + "\' nao encontrado.");
+      std::cout << "Arquivo \'" + fileName + "\' nao encontrado." << '\n';
+      std::this_thread::sleep_for(std::chrono::seconds(1));
+      return false;
+    }
 
     std::string type;
     inputFile >> type; // P2
     
     if(type != "P2"){
-      throw std::runtime_error("Arquivo nao identificado como PPM tipo P2.");
+      // throw std::runtime_error("Arquivo nao identificado como PPM tipo P2.");
+      std::cout << "Arquivo nao identificado como PPM tipo P2." << '\n';
+      std::this_thread::sleep_for(std::chrono::seconds(1));
+      return false;
     }
     
     int value, w, h, mv;
@@ -97,7 +110,7 @@ namespace stc {
     }
     
     inputFile.close();
-    return;
+    return true;
   }
   // ------------------
   void ImageP2::addDiamSquare(int n, double rough = 1, double ratio = 1, double weight = 1){

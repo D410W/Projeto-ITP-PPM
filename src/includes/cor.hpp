@@ -4,32 +4,32 @@
 
 namespace stc {
   /**
-   * @brief Represents an RGB color with red, green, and blue values.
+   * @brief Representa uma cor RGB, com valores RED, GREEN e BLUE.
    */
   struct Cor {
     unsigned char r = 0, g = 0, b = 0;
     /**
-     * @brief Default constructor.
+     * @brief Construtor padrao.
      *
-     * Initializes the color to black (0, 0, 0).
+     * Inicializa a cor como preto (0, 0, 0).
      */
     Cor() : r(0), g(0), b(0) {}
     
     /**
-     * @brief Parameterized constructor.
+     * @brief Construtor com parametros.
      *
-     * Initializes the color with specified red, green, and blue values.
+     * Inicializa a cor com valores especificados de RED, GREEN e BLUE.
      *
-     * @param r1 The red component value (0-255).
-     * @param g1 The green component value (0-255).
-     * @param b1 The blue component value (0-255).
+     * @param r1 O valor do componente RED (0-255).
+     * @param g1 O valor do componente GREEN (0-255).
+     * @param b1 O valor do componente BLUE (0-255).
      */
     Cor(int r1, int g1, int b1)
             : r(std::clamp(r1, 0, 255)),
               g(std::clamp(g1, 0, 255)),
               b(std::clamp(b1, 0, 255)) {}
               
-    // Cor - Cor
+    /// Cor - Cor
     Cor operator-(const Cor& other) const {
         return Cor(
             int(std::clamp(int(r) - int(other.r), 0, 255)),
@@ -38,7 +38,7 @@ namespace stc {
         );
     }
     
-    // Cor - int
+    /// Cor - int
     Cor operator-(int other) const {
         return Cor(
             int(std::clamp(int(r) - int(other), 0, 255)),
@@ -47,7 +47,7 @@ namespace stc {
         );
     }
     
-    // Cor * double
+    /// Cor * double
     Cor operator*(double other) const {
         return Cor(
             int(std::clamp(int(r * other), 0, 255)),
@@ -56,7 +56,7 @@ namespace stc {
         );   
     }
     
-    // Cor += Cor
+    /// Cor += Cor
     Cor& operator+=(const Cor& other) {
         r = std::clamp(int(r) + int(other.r), 0, 255);
         g = std::clamp(int(g) + int(other.g), 0, 255);
@@ -64,7 +64,7 @@ namespace stc {
         return *this;
     }
     
-    // Cor -= Cor
+    /// Cor -= Cor
     Cor& operator-=(const Cor& other) {
         r = std::clamp(int(r) - int(other.r), 0, 255);
         g = std::clamp(int(g) - int(other.g), 0, 255);
@@ -72,7 +72,7 @@ namespace stc {
         return *this;
     }
     
-    // Cor -= int
+    /// Cor -= int
     Cor& operator-=(int other) {
         r = std::clamp(int(r) - int(other), 0, 255);
         g = std::clamp(int(g) - int(other), 0, 255);
@@ -81,7 +81,7 @@ namespace stc {
     }
   };
 
-  // int - Cor
+  /// int - Cor
   inline Cor operator-(int value, const Cor& p) {
     return Cor(
         std::clamp(value - int(p.r), 0, 255),
