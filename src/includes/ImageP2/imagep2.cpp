@@ -29,14 +29,14 @@ namespace stc {
     if (w <= 0 || h <= 0) {
       throw std::invalid_argument("Largura e altura devem ser positivas.");
     }
-    this->pixels = new unsigned char[w * h]();
+    this->pixels = new unsigned char[w * h];
   }
 
   ImageP2::ImageP2(int w, int h, int newMax) : height(h), width(w), maxValue(newMax) { // init. com largura, altura e valor max.
     if (w <= 0 || h <= 0) {
       throw std::invalid_argument("Largura e altura devem ser positivas.");
     }
-    this->pixels = new unsigned char[w * h]();
+    this->pixels = new unsigned char[w * h];
   }
   // ------------------
   ImageP2& ImageP2::operator=(const ImageP2& other){ // copy assignment =
@@ -123,14 +123,6 @@ namespace stc {
     
     for(int i = 0; i < patternLength; i++){
       values[i] = new unsigned char[patternLength];
-    }
-    
-    // std::vector<std::vector<unsigned char>> values(patternLength, std::vector<unsigned char>(patternLength));
-    
-    for(int i = 0; i < patternLength; i++){
-      for(int j = 0; j < patternLength; j++){
-        values[i][j] = 0;
-      }
     }
     
     values[0][0] = std::rand()%256; // corners are set random.

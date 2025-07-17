@@ -10,9 +10,10 @@ namespace stc {
   /**
    * @brief Representa um conjunto de intervalos de cores.
    *
-   * Utilizada na conversao de gradiente para Cor RGB.
+   * Utilizada na conversão de gradiente para Cor RGB.
+   * Representa intervalos utilizando números inteiros.
    *
-   * Ex.: Conversao de um mapa de altitudes para uma imagem
+   * Ex.: Conversão de um mapa de altitudes para uma imagem
    * colorida, de acordo com os intervalos: \n
    * De 0 ate valores[0] = cores[0], \n
    * De valores[0] ate valores[1] = cores[1], \n
@@ -28,7 +29,7 @@ namespace stc {
     
   public:
     /**
-     * @brief Construtor padrao.
+     * @brief Construtor padrão.
      *
      * Inicializa a paleta com 0 cores. 
      */
@@ -116,6 +117,8 @@ namespace stc {
      * @brief Metodo para importar uma paleta.
      *
      * Importa os dados da Paleta a partir de um arquivo .txt especificado.
+     *
+     * @pre `dir` Arquivo deve existir e estar no formato de 'Paleta'.
      *
      * @param dir Caminho do arquivo para importar, no formato:
      * "paletas/paletadecores.txt"
