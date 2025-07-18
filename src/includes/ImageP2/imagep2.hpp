@@ -190,7 +190,7 @@ namespace stc {
      *
      * Modifica todos os valores da matriz de valores, para que
      * o menor valor seja 0 e o maior valor seja 255, mantendo
-     * a proporção original. 
+     * a proporção original.
      */
     void amplify();
     // ------------------
